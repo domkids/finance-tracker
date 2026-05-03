@@ -8,29 +8,25 @@
 <body>
 
   <!-- Firebase Scripts -->
-  <script type="module">
-    // Import Firebase modules from CDN
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+  import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
 
-    // Your Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyBxmlw1CUOXxrK9QOlr9VSjzIXdqNEW3M4",
-  authDomain: "finance-tracker-d76c5.firebaseapp.com",
-  projectId: "finance-tracker-d76c5",
-  storageBucket: "finance-tracker-d76c5.firebasestorage.app",
-  messagingSenderId: "402505755649",
-  appId: "1:402505755649:web:e14d1820bf0527ad316400",
-  measurementId: "G-RPV6VYQFN5"
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyBxmlw1CUOXxrK9QOlr9VSjzIXdqNEW3M4",
+    authDomain: "finance-tracker-d76c5.firebaseapp.com",
+    projectId: "finance-tracker-d76c5",
+    // ใส่ลิงก์ที่คุณให้มาตรงนี้ครับ
+    databaseURL: "https://finance-tracker-d76c5-default-rtdb.asia-southeast1.firebasedatabase.app/", 
+    storageBucket: "finance-tracker-d76c5.firebasestorage.app",
+    messagingSenderId: "402505755649",
+    appId: "1:402505755649:web:e14d1820bf0527ad316400",
+    measurementId: "G-RPV6VYQFN5"
+  };
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-
-    // Initialize services you want to use
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const dbRef = ref(db, 'finance_records');
 
     console.log("Firebase initialized successfully!");
     // Now you can use `auth` and `db` in your code
