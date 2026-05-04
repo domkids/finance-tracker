@@ -218,13 +218,48 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0}
 .confetti-piece{position:absolute;width:8px;height:8px;border-radius:2px;animation:confettiFall linear forwards}
 @keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
 
-@media(max-width:580px){
-  .grid3{grid-template-columns:1fr 1fr}
+@media(max-width:640px){
+  /* Body padding */
+  .body{padding:10px 10px}
+  /* Summary cards: income + expense side by side, balance full width */
+  .grid3{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+  .grid3 .card:nth-child(3){grid-column:1/-1}
+  /* Cards */
+  .card{padding:11px 12px}
+  .card-label{font-size:9px;letter-spacing:.6px}
+  .card-value{font-size:17px}
+  .card-sub{font-size:10px}
+  /* Forecast */
+  .forecast-card{padding:12px}
+  .avg-row{gap:5px}
+  .avg-chip{padding:6px 4px;border-radius:7px}
+  .avg-chip-val{font-size:12px}
+  .avg-chip-lbl{font-size:9px;margin-top:1px}
+  /* Charts */
+  .chart-card{padding:12px}
+  .chart-wrap{height:180px}
+  .chart-wrap-sm{height:170px}
+  /* Analytics twin: stack vertically on mobile */
+  #panel-analytics .chart-twin{grid-template-columns:1fr!important;gap:10px}
+  /* Cat grid */
   .cat-grid{grid-template-columns:1fr}
+  /* Form */
   .form-grid2{grid-template-columns:1fr}
-  .card-value{font-size:18px}
+  /* Tabs */
+  .tab-btn{padding:9px 6px;font-size:11px;min-width:54px}
+  /* Period nav */
+  .period-nav{padding:7px 10px;margin-bottom:10px}
+  .period-label{font-size:13px}
+  /* Section title */
+  .section-title{margin:14px 0 8px}
+  /* Table */
+  td,th{padding:8px 7px;font-size:12px}
 }
-@media(max-width:360px){.grid3{grid-template-columns:1fr}}
+@media(max-width:380px){
+  .grid3{grid-template-columns:1fr}
+  .grid3 .card:nth-child(3){grid-column:auto}
+  .tab-btn{padding:9px 4px;font-size:10px;min-width:46px}
+}
 </style>
 </head>
 <body>
@@ -311,7 +346,7 @@ hr{border:none;border-top:1px solid var(--border);margin:18px 0}
 <div id="panel-analytics" class="panel">
   <div class="grid3" id="ana-cards"></div>
   <div id="ana-forecast"></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+  <div class="chart-twin" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
     <div class="chart-card">
       <div class="chart-title">🍩 สัดส่วนรายจ่าย</div>
       <div class="chart-wrap-sm"><canvas id="chart-donut"></canvas></div>
